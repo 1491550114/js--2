@@ -126,14 +126,12 @@ function orbitalPeriod(arr) {
   const GM = 398600.4418;
   const earthRadius = 6367.4447;
   let b = arr.map((val) => {
-    // if(val.avgAlt)
     val.orbitalPeriod = Math.round(
       2 * Math.PI * Math.sqrt(Math.pow(val.avgAlt + earthRadius, 3) / GM)
     );
     delete val.avgAlt;
     return val;
   });
-  console.log(b);
   return arr;
 }
 
@@ -142,3 +140,32 @@ orbitalPeriod([
   { name: 'hubble', avgAlt: 556.7 },
   { name: 'moon', avgAlt: 378632.553 },
 ]);
+
+/**
+ * 8.回文检查器
+ * 注意：检查回文时，你需要先去除所有非字母数字的字符（标点、空格和符号），并将所有字母都转换成大写或都转换成小写。
+ */
+//方案一
+function palindrome(str) {
+  str = str.replace(/[\s|\,|\.|_|\-|\(|\)|\\|\/]/g, '').toLowerCase();
+  let first = str;
+  let last = str.split('').reverse().join('');
+  if (first == last) {
+    console.log('true');
+    return true;
+  } else {
+    console.log('false');
+    return false;
+  }
+}
+//方案二
+function palindrome(str) {
+  str = str.replace(/[\s|\,|\.|_|\-|\(|\)|\\|\/]/g, '').toLowerCase();
+  for (var i = 0, len = str.length - 1; i < len / 2; i++) {
+    if (str[i] !== str[len - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(palindrome('0_0 (: - :) 0-0'));
