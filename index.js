@@ -121,11 +121,24 @@ function addTogether() {
   }
 }
 
+//7.计算轨道周期
 function orbitalPeriod(arr) {
   const GM = 398600.4418;
   const earthRadius = 6367.4447;
-  arr.map((val) => {});
+  let b = arr.map((val) => {
+    // if(val.avgAlt)
+    val.orbitalPeriod = Math.round(
+      2 * Math.PI * Math.sqrt(Math.pow(val.avgAlt + earthRadius, 3) / GM)
+    );
+    delete val.avgAlt;
+    return val;
+  });
+  console.log(b);
   return arr;
 }
 
-orbitalPeriod([{ name: 'sputnik', avgAlt: 35873.5553 }]);
+orbitalPeriod([
+  { name: 'iss', avgAlt: 413.6 },
+  { name: 'hubble', avgAlt: 556.7 },
+  { name: 'moon', avgAlt: 378632.553 },
+]);
