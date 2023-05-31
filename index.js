@@ -317,13 +317,14 @@ convertToRoman(68);
  */
 function rot13(str) {
   str = str.split('');
-  let arr = str.map((val) => val.charCodeAt());
-  console.log(fromCode('A'), fromCode('M'));
-  console.log(str, arr);
-  return str;
+  return str
+    .map((val) => {
+      if (/[A-Z]/g.test(val)) {
+        let a = (val.charCodeAt() % 26) + 65;
+        val = String.fromCharCode(a);
+      }
+      return val;
+    })
+    .join('');
 }
-function fromCode(val) {
-  return val.charCodeAt(val);
-}
-// abcde fghij klmno pqrst uvwxy z
-rot13('SERR PBQR PNZC');
+console.log(rot13('SERR YBIR.'));
