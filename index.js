@@ -3,7 +3,7 @@ import './style.css';
 
 // Write Javascript code!
 const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS 算法2</h1>`;
+// appDiv.innerHTML = `<h1>JS 算法2</h1>`;
 function sumFibs(num) {
   let result = 0;
   let prev = 0;
@@ -146,10 +146,10 @@ orbitalPeriod([
  * 注意：检查回文时，你需要先去除所有非字母数字的字符（标点、空格和符号），并将所有字母都转换成大写或都转换成小写。
  */
 //方案一
-function palindrome(str) {
-  str = str.replace(/[\s|\,|\.|_|\-|\(|\)|\\|\/]/g, '').toLowerCase();
-  let first = str;
-  let last = str.split('').reverse().join('');
+function palindrome(res1) {
+  res1 = res1.replace(/[\s|\,|\.|_|\-|\(|\)|\\|\/]/g, '').toLowerCase();
+  let first = res1;
+  let last = res1.split('').reverse().join('');
   if (first == last) {
     console.log('true');
     return true;
@@ -159,13 +159,154 @@ function palindrome(str) {
   }
 }
 //方案二
-function palindrome(str) {
-  str = str.replace(/[\s|\,|\.|_|\-|\(|\)|\\|\/]/g, '').toLowerCase();
-  for (var i = 0, len = str.length - 1; i < len / 2; i++) {
-    if (str[i] !== str[len - i]) {
+function palindrome(res1) {
+  res1 = res1.replace(/[\s|\,|\.|_|\-|\(|\)|\\|\/]/g, '').toLowerCase();
+  for (var i = 0, len = res1.length - 1; i < len / 2; i++) {
+    if (res1[i] !== res1[len - i]) {
       return false;
     }
   }
   return true;
 }
-console.log(palindrome('0_0 (: - :) 0-0'));
+// console.log(palindrome('0_0 (: - :) 0-0'));
+
+/**
+ *9.罗马数字转换器
+ 把传入的数字转为罗马数字
+ 罗马数字	阿拉伯数字
+M	1000
+CM	900
+D	500
+CD	400
+C	100
+XC	90
+L	50
+XL	40
+X	10
+IX	9
+V	5
+IV	4
+I	1
+ */
+function convertToRoman(num) {
+  let str = '';
+  str += num;
+  let res1 = '',
+    res2 = '',
+    res3 = '',
+    res4 = '',
+    result = [];
+  // console.log(str.length);
+  // console.log(str[str.length - 3]);
+  if (str.length == 0) {
+    result = [];
+  } else if (str.length > 0) {
+    switch (str[str.length - 1]) {
+      case '1':
+        res1 = 'I';
+        break;
+      case '2':
+        res1 = 'II';
+        break;
+      case '3':
+        res1 = 'III';
+        break;
+      case '4':
+        res1 = 'IV';
+        break;
+      case '5':
+        res1 = 'V';
+        break;
+      case '6':
+        res1 = 'VI';
+        break;
+      case '7':
+        res1 = 'VII';
+        break;
+      case '8':
+        res1 = 'VIII';
+        break;
+      case '9':
+        res1 = 'IX';
+        break;
+    }
+    switch (str[str.length - 2]) {
+      case '1':
+        res2 = 'X';
+        break;
+      case '2':
+        res2 = 'XX';
+        break;
+      case '3':
+        res2 = 'XXX';
+        break;
+      case '4':
+        res2 = 'XL';
+        break;
+      case '5':
+        res2 = 'L';
+        break;
+      case '6':
+        res2 = 'LX';
+        break;
+      case '7':
+        res2 = 'LXX';
+        break;
+      case '8':
+        res2 = 'LXXX';
+        break;
+      case '9':
+        res2 = 'XC';
+        break;
+    }
+    switch (str[str.length - 3]) {
+      case '1':
+        res3 = 'C';
+        break;
+      case '2':
+        res3 = 'CC';
+        break;
+      case '3':
+        res3 = 'CCC';
+        break;
+      case '4':
+        res3 = 'CD';
+        break;
+      case '5':
+        res3 = 'D';
+        break;
+      case '6':
+        res3 = 'DC';
+        break;
+      case '7':
+        res3 = 'DCC';
+        break;
+      case '8':
+        res3 = 'DCCC';
+        break;
+      case '9':
+        res3 = 'CM';
+        break;
+    }
+    switch (str[str.length - 4]) {
+      case '1':
+        res4 = 'M';
+        break;
+      case '2':
+        res4 = 'MM';
+        break;
+      case '3':
+        res4 = 'MMM';
+        break;
+      case '4':
+        res4 = 'MMMM';
+        break;
+    }
+  }
+  // console.log(res4, res3, res2, res1);
+  result.push(res4, res3, res2, res1);
+  console.log(result.join(''));
+  return result.join('');
+}
+
+convertToRoman(68);
