@@ -305,8 +305,25 @@ function convertToRoman(num) {
   }
   // console.log(res4, res3, res2, res1);
   result.push(res4, res3, res2, res1);
-  console.log(result.join(''));
   return result.join('');
 }
 
 convertToRoman(68);
+
+/**
+ * 10.恺撒密码
+ * 移位密码
+现代最常被应用到的一个变种就是 ROT13 加密，也就是明文中的字母向后移 13 位。 也就是， A ↔ N，B ↔ O 等等。
+ */
+function rot13(str) {
+  str = str.split('');
+  let arr = str.map((val) => val.charCodeAt());
+  console.log(fromCode('A'), fromCode('M'));
+  console.log(str, arr);
+  return str;
+}
+function fromCode(val) {
+  return val.charCodeAt(val);
+}
+// abcde fghij klmno pqrst uvwxy z
+rot13('SERR PBQR PNZC');
