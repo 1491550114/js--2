@@ -327,4 +327,25 @@ function rot13(str) {
     })
     .join('');
 }
-console.log(rot13('SERR YBIR.'));
+
+/**
+ * 11.电话号码检查器
+ * 555-555-5555
+(555)555-5555
+(555) 555-5555
+555 555 5555
+5555555555
+1 555 555 5555
+ */
+function telephoneCheck(str) {
+  // let regex = /^(1\s)?(\(?\d{3\)?)[\s\-]?\d{3}[\s\-]?\d{4}$/g;
+  let regex = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/g;
+  let rex1 = /^(1\s?)?\d{3}([-\s]?)\d{3}\2\d{4}$/,
+    rex2 = /^(1\s?)?\(\d{3}\)\s?\d{3}[-\s]?\d{4}$/;
+  return regex.test(str) ? true : false;
+}
+telephoneCheck('1 (555) 555-5555');
+telephoneCheck('1 555-555-5555');
+telephoneCheck('1(555)555-5555');
+telephoneCheck('1 555)555-5555');
+telephoneCheck('5555555555');
